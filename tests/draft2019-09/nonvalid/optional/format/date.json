@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "schema1": {
+            "const": "1963-06-19"
+        },
+        "schema2": {
+            "not": {
+                "format": "date"
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    }
+]

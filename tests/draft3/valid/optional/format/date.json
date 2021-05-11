@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "schema1": {
+            "const": "1963-06-19"
+        },
+        "schema2": {
+            "format": "date"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 2,
+        "schema1": {
+            "const": "06/19/1963"
+        },
+        "schema2": {
+            "format": "date"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 3,
+        "schema1": {
+            "const": "2013-350"
+        },
+        "schema2": {
+            "format": "date"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 4,
+        "schema1": {
+            "const": "1998-1-20"
+        },
+        "schema2": {
+            "format": "date"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 5,
+        "schema1": {
+            "const": "1998-01-1"
+        },
+        "schema2": {
+            "format": "date"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    }
+]
