@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "description": "Schema for tests",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "required": [ "id", "schema1", "schema2", "tests" ],
+        "properties": {
+            "id": {
+                "description": "Uniquely identifies a set of tests within the same file",
+                "type": "number"
+            },
+            "description": {
+                "description": "The test set description",
+                "type": "string"
+            },
+            "comment": {
+                "description": "Any additional comments about the test set",
+                "type": "string"
+            },
+            "schema1": {
+                "description": "This should be a valid schema. This should be a ref to a meta-schema if schema keywords need testing. This is the first subschenma."
+            },
+            "schema2": {
+                "description": "This should be a valid schema. This should be a ref to a meta-schema if schema keywords need testing. This is the second subschenma."
+            },
+            "tests": {
+                "description": "A test for the relation of schema1 and schema2",
+                "type": "object",
+                "properties": { 
+                    "s1SubsetEqOfs2": {
+                        "type": "boolean"
+                      },
+                    "s2SubsetEqOfs1": {
+                        "type": "boolean"
+                      }
+                },
+                "additionalProperties": false,
+                "required":["s1SubsetEqOfs2"]
+            }
+        },
+        "additionalProperties": false
+        
+    },
+    "minItems": 1
+}

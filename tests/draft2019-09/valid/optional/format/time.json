@@ -1,0 +1,218 @@
+[
+    {
+        "id": 1,
+        "schema1": {
+            "const": "08:30:06Z"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 2,
+        "schema1": {
+            "const": "23:59:60Z"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 3,
+        "schema1": {
+            "const": "15:59:60-08:00"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 4,
+        "schema1": {
+            "const": "23:20:50.52Z"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 5,
+        "schema1": {
+            "const": "08:30:06.283185Z"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 6,
+        "schema1": {
+            "const": "08:30:06+00:20"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 7,
+        "schema1": {
+            "const": "08:30:06-08:00"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 8,
+        "schema1": {
+            "const": "08:30:06z"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 9,
+        "schema1": {
+            "const": "24:00:00Z"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 10,
+        "schema1": {
+            "const": "00:60:00Z"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 11,
+        "schema1": {
+            "const": "00:00:61Z"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 12,
+        "schema1": {
+            "const": "22:59:60Z"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 13,
+        "schema1": {
+            "const": "23:58:60Z"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 14,
+        "schema1": {
+            "const": "01:02:03+24:00"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 15,
+        "schema1": {
+            "const": "01:02:03+00:60"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 16,
+        "schema1": {
+            "const": "01:02:03Z+00:30"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 17,
+        "schema1": {
+            "const": "08:30:06 PST"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 18,
+        "schema1": {
+            "const": "01:01:01,1111"
+        },
+        "schema2": {
+            "format": "time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    }
+]
