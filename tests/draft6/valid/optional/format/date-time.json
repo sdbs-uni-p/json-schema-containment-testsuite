@@ -142,5 +142,29 @@
         "tests": {
             "s1SubsetEqOfs2": false
         }
+    },
+    {
+        "id": 13,
+        "schema1": {
+            "const": "1963-06-1\u09eaT00:00:00Z"
+        },
+        "schema2": {
+            "format": "date-time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 14,
+        "schema1": {
+            "const": "1963-06-11T0\u09ea:00:00Z"
+        },
+        "schema2": {
+            "format": "date-time"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
     }
 ]

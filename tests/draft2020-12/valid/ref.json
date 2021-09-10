@@ -931,5 +931,203 @@
         "tests": {
             "s1SubsetEqOfs2": true
         }
+    },
+    {
+        "id": 36,
+        "schema1": {
+            "const": {
+                "foo": {
+                    "bar": 1
+                },
+                "bar": "a"
+            }
+        },
+        "schema2": {
+            "$id": "http://example.com/schema-relative-uri-defs1.json",
+            "properties": {
+                "foo": {
+                    "$id": "schema-relative-uri-defs2.json",
+                    "$defs": {
+                        "inner": {
+                            "properties": {
+                                "bar": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "$ref": "#/$defs/inner"
+                }
+            },
+            "$ref": "schema-relative-uri-defs2.json"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 37,
+        "schema1": {
+            "const": {
+                "foo": {
+                    "bar": "a"
+                },
+                "bar": 1
+            }
+        },
+        "schema2": {
+            "$id": "http://example.com/schema-relative-uri-defs1.json",
+            "properties": {
+                "foo": {
+                    "$id": "schema-relative-uri-defs2.json",
+                    "$defs": {
+                        "inner": {
+                            "properties": {
+                                "bar": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "$ref": "#/$defs/inner"
+                }
+            },
+            "$ref": "schema-relative-uri-defs2.json"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 38,
+        "schema1": {
+            "const": {
+                "foo": {
+                    "bar": "a"
+                },
+                "bar": "a"
+            }
+        },
+        "schema2": {
+            "$id": "http://example.com/schema-relative-uri-defs1.json",
+            "properties": {
+                "foo": {
+                    "$id": "schema-relative-uri-defs2.json",
+                    "$defs": {
+                        "inner": {
+                            "properties": {
+                                "bar": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "$ref": "#/$defs/inner"
+                }
+            },
+            "$ref": "schema-relative-uri-defs2.json"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 39,
+        "schema1": {
+            "const": {
+                "foo": {
+                    "bar": 1
+                },
+                "bar": "a"
+            }
+        },
+        "schema2": {
+            "$id": "http://example.com/schema-refs-absolute-uris-defs1.json",
+            "properties": {
+                "foo": {
+                    "$id": "http://example.com/schema-refs-absolute-uris-defs2.json",
+                    "$defs": {
+                        "inner": {
+                            "properties": {
+                                "bar": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "$ref": "#/$defs/inner"
+                }
+            },
+            "$ref": "schema-refs-absolute-uris-defs2.json"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 40,
+        "schema1": {
+            "const": {
+                "foo": {
+                    "bar": "a"
+                },
+                "bar": 1
+            }
+        },
+        "schema2": {
+            "$id": "http://example.com/schema-refs-absolute-uris-defs1.json",
+            "properties": {
+                "foo": {
+                    "$id": "http://example.com/schema-refs-absolute-uris-defs2.json",
+                    "$defs": {
+                        "inner": {
+                            "properties": {
+                                "bar": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "$ref": "#/$defs/inner"
+                }
+            },
+            "$ref": "schema-refs-absolute-uris-defs2.json"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 41,
+        "schema1": {
+            "const": {
+                "foo": {
+                    "bar": "a"
+                },
+                "bar": "a"
+            }
+        },
+        "schema2": {
+            "$id": "http://example.com/schema-refs-absolute-uris-defs1.json",
+            "properties": {
+                "foo": {
+                    "$id": "http://example.com/schema-refs-absolute-uris-defs2.json",
+                    "$defs": {
+                        "inner": {
+                            "properties": {
+                                "bar": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "$ref": "#/$defs/inner"
+                }
+            },
+            "$ref": "schema-refs-absolute-uris-defs2.json"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
     }
 ]

@@ -756,5 +756,52 @@
         "tests": {
             "s1SubsetEqOfs2": false
         }
+    },
+    {
+        "id": 20,
+        "schema1": {
+            "const": {
+                "alpha": 1.1
+            }
+        },
+        "schema2": {
+            "$id": "main.json",
+            "$defs": {
+                "inner": {
+                    "$id": "inner.json",
+                    "$recursiveAnchor": true,
+                    "title": "inner",
+                    "additionalProperties": {
+                        "$recursiveRef": "#"
+                    }
+                }
+            },
+            "not": {
+                "if": {
+                    "propertyNames": {
+                        "pattern": "^[a-m]"
+                    }
+                },
+                "then": {
+                    "title": "any type of node",
+                    "$id": "anyLeafNode.json",
+                    "$recursiveAnchor": true,
+                    "$ref": "main.json#/$defs/inner"
+                },
+                "else": {
+                    "title": "integer node",
+                    "$id": "integerNode.json",
+                    "$recursiveAnchor": true,
+                    "type": [
+                        "object",
+                        "integer"
+                    ],
+                    "$ref": "main.json#/$defs/inner"
+                }
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
     }
 ]

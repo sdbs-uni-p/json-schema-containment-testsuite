@@ -310,6 +310,38 @@
     {
         "id": 12,
         "schema1": {
+            "const": 10
+        },
+        "schema2": {
+            "id": "http://localhost:1234/sibling_id/base/",
+            "definitions": {
+                "foo": {
+                    "id": "http://localhost:1234/sibling_id/foo.json",
+                    "minimum": 2
+                },
+                "base_foo": {
+                    "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                    "id": "foo.json",
+                    "minimum": 5
+                }
+            },
+            "not": {
+                "allOf": [
+                    {
+                        "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                        "id": "http://localhost:1234/sibling_id/",
+                        "$ref": "foo.json"
+                    }
+                ]
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 13,
+        "schema1": {
             "const": {
                 "items": {
                     "type": "integer"
@@ -326,7 +358,7 @@
         }
     },
     {
-        "id": 13,
+        "id": 14,
         "schema1": {
             "const": {
                 "$ref": "#/definitions/a_string"

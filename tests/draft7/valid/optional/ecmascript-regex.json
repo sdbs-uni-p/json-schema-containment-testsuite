@@ -2,7 +2,7 @@
     {
         "id": 1,
         "schema1": {
-            "const": "abc\n"
+            "const": "abc\\n"
         },
         "schema2": {
             "type": "string",

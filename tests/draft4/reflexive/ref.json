@@ -210,10 +210,46 @@
     {
         "id": 7,
         "schema1": {
-            "$ref": "http://json-schema.org/draft-04/schema#"
+            "id": "http://localhost:1234/sibling_id/base/",
+            "definitions": {
+                "foo": {
+                    "id": "http://localhost:1234/sibling_id/foo.json",
+                    "minimum": 2
+                },
+                "base_foo": {
+                    "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                    "id": "foo.json",
+                    "minimum": 5
+                }
+            },
+            "allOf": [
+                {
+                    "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                    "id": "http://localhost:1234/sibling_id/",
+                    "$ref": "foo.json"
+                }
+            ]
         },
         "schema2": {
-            "$ref": "http://json-schema.org/draft-04/schema#"
+            "id": "http://localhost:1234/sibling_id/base/",
+            "definitions": {
+                "foo": {
+                    "id": "http://localhost:1234/sibling_id/foo.json",
+                    "minimum": 2
+                },
+                "base_foo": {
+                    "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                    "id": "foo.json",
+                    "minimum": 5
+                }
+            },
+            "allOf": [
+                {
+                    "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                    "id": "http://localhost:1234/sibling_id/",
+                    "$ref": "foo.json"
+                }
+            ]
         },
         "tests": {
             "s1SubsetEqOfs2": true,
@@ -223,18 +259,10 @@
     {
         "id": 8,
         "schema1": {
-            "properties": {
-                "$ref": {
-                    "type": "string"
-                }
-            }
+            "$ref": "http://json-schema.org/draft-04/schema#"
         },
         "schema2": {
-            "properties": {
-                "$ref": {
-                    "type": "string"
-                }
-            }
+            "$ref": "http://json-schema.org/draft-04/schema#"
         },
         "tests": {
             "s1SubsetEqOfs2": true,
@@ -246,11 +274,6 @@
         "schema1": {
             "properties": {
                 "$ref": {
-                    "$ref": "#/definitions/is-string"
-                }
-            },
-            "definitions": {
-                "is-string": {
                     "type": "string"
                 }
             }
@@ -258,11 +281,6 @@
         "schema2": {
             "properties": {
                 "$ref": {
-                    "$ref": "#/definitions/is-string"
-                }
-            },
-            "definitions": {
-                "is-string": {
                     "type": "string"
                 }
             }
@@ -275,78 +293,26 @@
     {
         "id": 10,
         "schema1": {
-            "id": "http://localhost:1234/tree",
-            "description": "tree of nodes",
-            "type": "object",
             "properties": {
-                "meta": {
-                    "type": "string"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "node"
-                    }
+                "$ref": {
+                    "$ref": "#/definitions/is-string"
                 }
             },
-            "required": [
-                "meta",
-                "nodes"
-            ],
             "definitions": {
-                "node": {
-                    "id": "http://localhost:1234/node",
-                    "description": "node",
-                    "type": "object",
-                    "properties": {
-                        "value": {
-                            "type": "number"
-                        },
-                        "subtree": {
-                            "$ref": "tree"
-                        }
-                    },
-                    "required": [
-                        "value"
-                    ]
+                "is-string": {
+                    "type": "string"
                 }
             }
         },
         "schema2": {
-            "id": "http://localhost:1234/tree",
-            "description": "tree of nodes",
-            "type": "object",
             "properties": {
-                "meta": {
-                    "type": "string"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "node"
-                    }
+                "$ref": {
+                    "$ref": "#/definitions/is-string"
                 }
             },
-            "required": [
-                "meta",
-                "nodes"
-            ],
             "definitions": {
-                "node": {
-                    "id": "http://localhost:1234/node",
-                    "description": "node",
-                    "type": "object",
-                    "properties": {
-                        "value": {
-                            "type": "number"
-                        },
-                        "subtree": {
-                            "$ref": "tree"
-                        }
-                    },
-                    "required": [
-                        "value"
-                    ]
+                "is-string": {
+                    "type": "string"
                 }
             }
         },
@@ -358,26 +324,78 @@
     {
         "id": 11,
         "schema1": {
+            "id": "http://localhost:1234/tree",
+            "description": "tree of nodes",
+            "type": "object",
             "properties": {
-                "foo\"bar": {
-                    "$ref": "#/definitions/foo%22bar"
+                "meta": {
+                    "type": "string"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "node"
+                    }
                 }
             },
+            "required": [
+                "meta",
+                "nodes"
+            ],
             "definitions": {
-                "foo\"bar": {
-                    "type": "number"
+                "node": {
+                    "id": "http://localhost:1234/node",
+                    "description": "node",
+                    "type": "object",
+                    "properties": {
+                        "value": {
+                            "type": "number"
+                        },
+                        "subtree": {
+                            "$ref": "tree"
+                        }
+                    },
+                    "required": [
+                        "value"
+                    ]
                 }
             }
         },
         "schema2": {
+            "id": "http://localhost:1234/tree",
+            "description": "tree of nodes",
+            "type": "object",
             "properties": {
-                "foo\"bar": {
-                    "$ref": "#/definitions/foo%22bar"
+                "meta": {
+                    "type": "string"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "node"
+                    }
                 }
             },
+            "required": [
+                "meta",
+                "nodes"
+            ],
             "definitions": {
-                "foo\"bar": {
-                    "type": "number"
+                "node": {
+                    "id": "http://localhost:1234/node",
+                    "description": "node",
+                    "type": "object",
+                    "properties": {
+                        "value": {
+                            "type": "number"
+                        },
+                        "subtree": {
+                            "$ref": "tree"
+                        }
+                    },
+                    "required": [
+                        "value"
+                    ]
                 }
             }
         },
@@ -389,6 +407,37 @@
     {
         "id": 12,
         "schema1": {
+            "properties": {
+                "foo\"bar": {
+                    "$ref": "#/definitions/foo%22bar"
+                }
+            },
+            "definitions": {
+                "foo\"bar": {
+                    "type": "number"
+                }
+            }
+        },
+        "schema2": {
+            "properties": {
+                "foo\"bar": {
+                    "$ref": "#/definitions/foo%22bar"
+                }
+            },
+            "definitions": {
+                "foo\"bar": {
+                    "type": "number"
+                }
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 13,
+        "schema1": {
             "allOf": [
                 {
                     "$ref": "#foo"
@@ -420,7 +469,7 @@
         }
     },
     {
-        "id": 13,
+        "id": 14,
         "schema1": {
             "id": "http://localhost:1234/root",
             "allOf": [
@@ -465,7 +514,7 @@
         }
     },
     {
-        "id": 14,
+        "id": 15,
         "schema1": {
             "definitions": {
                 "a_string": {

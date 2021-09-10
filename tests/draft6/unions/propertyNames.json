@@ -43,6 +43,31 @@
             "anyOf": [
                 {
                     "const": {
+                        "a": {},
+                        "aa": {},
+                        "aaa": {}
+                    }
+                },
+                {
+                    "const": {}
+                }
+            ]
+        },
+        "schema2": {
+            "propertyNames": {
+                "pattern": "^a+$"
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 3,
+        "schema1": {
+            "anyOf": [
+                {
+                    "const": {
                         "foo": 1
                     }
                 },

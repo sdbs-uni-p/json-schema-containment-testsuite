@@ -301,5 +301,37 @@
         "tests": {
             "s1SubsetEqOfs2": false
         }
+    },
+    {
+        "id": 19,
+        "schema1": {
+            "const": [
+                "foo"
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "if": false,
+                "else": true
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 20,
+        "schema1": {
+            "const": []
+        },
+        "schema2": {
+            "contains": {
+                "if": false,
+                "else": true
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
     }
 ]

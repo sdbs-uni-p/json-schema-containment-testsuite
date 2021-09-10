@@ -4,7 +4,7 @@
         "schema1": {
             "anyOf": [
                 {
-                    "$defs": {
+                    "definitions": {
                         "id_in_unknown0": {
                             "not": {
                                 "array_of_schemas": [
@@ -32,10 +32,10 @@
                     },
                     "anyOf": [
                         {
-                            "$ref": "#/anyOf/0/$defs/id_in_unknown0"
+                            "$ref": "#/anyOf/0/definitions/id_in_unknown0"
                         },
                         {
-                            "$ref": "#/anyOf/0/$defs/id_in_unknown1"
+                            "$ref": "#/anyOf/0/definitions/id_in_unknown1"
                         },
                         {
                             "$ref": "https://localhost:1234/unknownKeyword/my_identifier.json"
@@ -43,7 +43,7 @@
                     ]
                 },
                 {
-                    "$defs": {
+                    "definitions": {
                         "id_in_unknown0": {
                             "not": {
                                 "array_of_schemas": [
@@ -72,10 +72,10 @@
                     "not": {
                         "anyOf": [
                             {
-                                "$ref": "#/anyOf/1/$defs/id_in_unknown0"
+                                "$ref": "#/anyOf/1/definitions/id_in_unknown0"
                             },
                             {
-                                "$ref": "#/anyOf/1/$defs/id_in_unknown1"
+                                "$ref": "#/anyOf/1/definitions/id_in_unknown1"
                             },
                             {
                                 "$ref": "https://localhost:1234/unknownKeyword/my_identifier1.json"

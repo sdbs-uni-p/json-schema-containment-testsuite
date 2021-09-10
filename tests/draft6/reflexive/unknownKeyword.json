@@ -2,7 +2,7 @@
     {
         "id": 1,
         "schema1": {
-            "$defs": {
+            "definitions": {
                 "id_in_unknown0": {
                     "not": {
                         "array_of_schemas": [
@@ -30,10 +30,10 @@
             },
             "anyOf": [
                 {
-                    "$ref": "#/$defs/id_in_unknown0"
+                    "$ref": "#/definitions/id_in_unknown0"
                 },
                 {
-                    "$ref": "#/$defs/id_in_unknown1"
+                    "$ref": "#/definitions/id_in_unknown1"
                 },
                 {
                     "$ref": "https://localhost:1234/unknownKeyword/my_identifier.json"
@@ -41,7 +41,7 @@
             ]
         },
         "schema2": {
-            "$defs": {
+            "definitions": {
                 "id_in_unknown0": {
                     "not": {
                         "array_of_schemas": [
@@ -69,10 +69,10 @@
             },
             "anyOf": [
                 {
-                    "$ref": "#/$defs/id_in_unknown0"
+                    "$ref": "#/definitions/id_in_unknown0"
                 },
                 {
-                    "$ref": "#/$defs/id_in_unknown1"
+                    "$ref": "#/definitions/id_in_unknown1"
                 },
                 {
                     "$ref": "https://localhost:1234/unknownKeyword/my_identifier.json"

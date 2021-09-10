@@ -168,5 +168,24 @@
         "tests": {
             "s1SubsetEqOfs2": false
         }
+    },
+    {
+        "id": 10,
+        "schema1": {
+            "const": [
+                "foo"
+            ]
+        },
+        "schema2": {
+            "not": {
+                "contains": {
+                    "if": false,
+                    "else": true
+                }
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
     }
 ]

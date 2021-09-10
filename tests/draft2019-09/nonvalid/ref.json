@@ -460,5 +460,75 @@
         "tests": {
             "s1SubsetEqOfs2": false
         }
+    },
+    {
+        "id": 17,
+        "schema1": {
+            "const": {
+                "foo": {
+                    "bar": "a"
+                },
+                "bar": "a"
+            }
+        },
+        "schema2": {
+            "$id": "http://example.com/schema-relative-uri-defs1.json",
+            "$ref": "schema-relative-uri-defs2.json",
+            "not": {
+                "properties": {
+                    "foo": {
+                        "$id": "schema-relative-uri-defs2.json",
+                        "$defs": {
+                            "inner": {
+                                "properties": {
+                                    "bar": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "$ref": "#/$defs/inner"
+                    }
+                }
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 18,
+        "schema1": {
+            "const": {
+                "foo": {
+                    "bar": "a"
+                },
+                "bar": "a"
+            }
+        },
+        "schema2": {
+            "$id": "http://example.com/schema-refs-absolute-uris-defs1.json",
+            "$ref": "schema-refs-absolute-uris-defs2.json",
+            "not": {
+                "properties": {
+                    "foo": {
+                        "$id": "http://example.com/schema-refs-absolute-uris-defs2.json",
+                        "$defs": {
+                            "inner": {
+                                "properties": {
+                                    "bar": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "$ref": "#/$defs/inner"
+                    }
+                }
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
     }
 ]

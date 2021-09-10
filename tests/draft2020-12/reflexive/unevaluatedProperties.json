@@ -575,43 +575,49 @@
         "id": 15,
         "schema1": {
             "type": "object",
-            "properties": {
-                "foo": {
-                    "type": "string"
-                }
+            "if": {
+                "properties": {
+                    "foo": {
+                        "const": "then"
+                    }
+                },
+                "required": [
+                    "foo"
+                ]
             },
-            "dependentSchemas": {
-                "foo": {
-                    "properties": {
-                        "bar": {
-                            "const": "bar"
-                        }
-                    },
-                    "required": [
-                        "bar"
-                    ]
-                }
+            "else": {
+                "properties": {
+                    "baz": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "baz"
+                ]
             },
             "unevaluatedProperties": false
         },
         "schema2": {
             "type": "object",
-            "properties": {
-                "foo": {
-                    "type": "string"
-                }
+            "if": {
+                "properties": {
+                    "foo": {
+                        "const": "then"
+                    }
+                },
+                "required": [
+                    "foo"
+                ]
             },
-            "dependentSchemas": {
-                "foo": {
-                    "properties": {
-                        "bar": {
-                            "const": "bar"
-                        }
-                    },
-                    "required": [
-                        "bar"
-                    ]
-                }
+            "else": {
+                "properties": {
+                    "baz": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "baz"
+                ]
             },
             "unevaluatedProperties": false
         },
@@ -624,26 +630,50 @@
         "id": 16,
         "schema1": {
             "type": "object",
-            "properties": {
-                "foo": {
-                    "type": "string"
-                }
+            "if": {
+                "properties": {
+                    "foo": {
+                        "const": "then"
+                    }
+                },
+                "required": [
+                    "foo"
+                ]
             },
-            "allOf": [
-                true
-            ],
+            "then": {
+                "properties": {
+                    "bar": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "bar"
+                ]
+            },
             "unevaluatedProperties": false
         },
         "schema2": {
             "type": "object",
-            "properties": {
-                "foo": {
-                    "type": "string"
-                }
+            "if": {
+                "properties": {
+                    "foo": {
+                        "const": "then"
+                    }
+                },
+                "required": [
+                    "foo"
+                ]
             },
-            "allOf": [
-                true
-            ],
+            "then": {
+                "properties": {
+                    "bar": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "bar"
+                ]
+            },
             "unevaluatedProperties": false
         },
         "tests": {
@@ -655,41 +685,45 @@
         "id": 17,
         "schema1": {
             "type": "object",
-            "$ref": "#/$defs/bar",
             "properties": {
                 "foo": {
                     "type": "string"
                 }
             },
-            "unevaluatedProperties": false,
-            "$defs": {
-                "bar": {
+            "dependentSchemas": {
+                "foo": {
                     "properties": {
                         "bar": {
-                            "type": "string"
+                            "const": "bar"
                         }
-                    }
+                    },
+                    "required": [
+                        "bar"
+                    ]
                 }
-            }
+            },
+            "unevaluatedProperties": false
         },
         "schema2": {
             "type": "object",
-            "$ref": "#/$defs/bar",
             "properties": {
                 "foo": {
                     "type": "string"
                 }
             },
-            "unevaluatedProperties": false,
-            "$defs": {
-                "bar": {
+            "dependentSchemas": {
+                "foo": {
                     "properties": {
                         "bar": {
-                            "type": "string"
+                            "const": "bar"
                         }
-                    }
+                    },
+                    "required": [
+                        "bar"
+                    ]
                 }
-            }
+            },
+            "unevaluatedProperties": false
         },
         "tests": {
             "s1SubsetEqOfs2": true,
@@ -699,28 +733,28 @@
     {
         "id": 18,
         "schema1": {
-            "allOf": [
-                {
-                    "properties": {
-                        "foo": true
-                    }
-                },
-                {
-                    "unevaluatedProperties": false
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string"
                 }
-            ]
+            },
+            "allOf": [
+                true
+            ],
+            "unevaluatedProperties": false
         },
         "schema2": {
-            "allOf": [
-                {
-                    "properties": {
-                        "foo": true
-                    }
-                },
-                {
-                    "unevaluatedProperties": false
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string"
                 }
-            ]
+            },
+            "allOf": [
+                true
+            ],
+            "unevaluatedProperties": false
         },
         "tests": {
             "s1SubsetEqOfs2": true,
@@ -731,31 +765,41 @@
         "id": 19,
         "schema1": {
             "type": "object",
+            "$ref": "#/$defs/bar",
             "properties": {
                 "foo": {
                     "type": "string"
                 }
             },
-            "allOf": [
-                {
-                    "unevaluatedProperties": true
+            "unevaluatedProperties": false,
+            "$defs": {
+                "bar": {
+                    "properties": {
+                        "bar": {
+                            "type": "string"
+                        }
+                    }
                 }
-            ],
-            "unevaluatedProperties": false
+            }
         },
         "schema2": {
             "type": "object",
+            "$ref": "#/$defs/bar",
             "properties": {
                 "foo": {
                     "type": "string"
                 }
             },
-            "allOf": [
-                {
-                    "unevaluatedProperties": true
+            "unevaluatedProperties": false,
+            "$defs": {
+                "bar": {
+                    "properties": {
+                        "bar": {
+                            "type": "string"
+                        }
+                    }
                 }
-            ],
-            "unevaluatedProperties": false
+            }
         },
         "tests": {
             "s1SubsetEqOfs2": true,
@@ -765,32 +809,28 @@
     {
         "id": 20,
         "schema1": {
-            "type": "object",
             "allOf": [
                 {
                     "properties": {
-                        "foo": {
-                            "type": "string"
-                        }
-                    },
-                    "unevaluatedProperties": true
+                        "foo": true
+                    }
+                },
+                {
+                    "unevaluatedProperties": false
                 }
-            ],
-            "unevaluatedProperties": false
+            ]
         },
         "schema2": {
-            "type": "object",
             "allOf": [
                 {
                     "properties": {
-                        "foo": {
-                            "type": "string"
-                        }
-                    },
-                    "unevaluatedProperties": true
+                        "foo": true
+                    }
+                },
+                {
+                    "unevaluatedProperties": false
                 }
-            ],
-            "unevaluatedProperties": false
+            ]
         },
         "tests": {
             "s1SubsetEqOfs2": true,
@@ -808,6 +848,76 @@
             },
             "allOf": [
                 {
+                    "unevaluatedProperties": true
+                }
+            ],
+            "unevaluatedProperties": false
+        },
+        "schema2": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string"
+                }
+            },
+            "allOf": [
+                {
+                    "unevaluatedProperties": true
+                }
+            ],
+            "unevaluatedProperties": false
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 22,
+        "schema1": {
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "foo": {
+                            "type": "string"
+                        }
+                    },
+                    "unevaluatedProperties": true
+                }
+            ],
+            "unevaluatedProperties": false
+        },
+        "schema2": {
+            "type": "object",
+            "allOf": [
+                {
+                    "properties": {
+                        "foo": {
+                            "type": "string"
+                        }
+                    },
+                    "unevaluatedProperties": true
+                }
+            ],
+            "unevaluatedProperties": false
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 23,
+        "schema1": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string"
+                }
+            },
+            "allOf": [
+                {
                     "unevaluatedProperties": false
                 }
             ],
@@ -833,88 +943,11 @@
         }
     },
     {
-        "id": 22,
-        "schema1": {
-            "type": "object",
-            "allOf": [
-                {
-                    "properties": {
-                        "foo": {
-                            "type": "string"
-                        }
-                    },
-                    "unevaluatedProperties": false
-                }
-            ],
-            "unevaluatedProperties": true
-        },
-        "schema2": {
-            "type": "object",
-            "allOf": [
-                {
-                    "properties": {
-                        "foo": {
-                            "type": "string"
-                        }
-                    },
-                    "unevaluatedProperties": false
-                }
-            ],
-            "unevaluatedProperties": true
-        },
-        "tests": {
-            "s1SubsetEqOfs2": true,
-            "s2SubsetEqOfs1": true
-        }
-    },
-    {
-        "id": 23,
-        "schema1": {
-            "type": "object",
-            "allOf": [
-                {
-                    "properties": {
-                        "foo": {
-                            "type": "string"
-                        }
-                    },
-                    "unevaluatedProperties": true
-                },
-                {
-                    "unevaluatedProperties": false
-                }
-            ]
-        },
-        "schema2": {
-            "type": "object",
-            "allOf": [
-                {
-                    "properties": {
-                        "foo": {
-                            "type": "string"
-                        }
-                    },
-                    "unevaluatedProperties": true
-                },
-                {
-                    "unevaluatedProperties": false
-                }
-            ]
-        },
-        "tests": {
-            "s1SubsetEqOfs2": true,
-            "s2SubsetEqOfs1": true
-        }
-    },
-    {
         "id": 24,
         "schema1": {
             "type": "object",
             "allOf": [
                 {
-                    "unevaluatedProperties": true
-                },
-                {
                     "properties": {
                         "foo": {
                             "type": "string"
@@ -922,15 +955,13 @@
                     },
                     "unevaluatedProperties": false
                 }
-            ]
+            ],
+            "unevaluatedProperties": true
         },
         "schema2": {
             "type": "object",
             "allOf": [
                 {
-                    "unevaluatedProperties": true
-                },
-                {
                     "properties": {
                         "foo": {
                             "type": "string"
@@ -938,7 +969,8 @@
                     },
                     "unevaluatedProperties": false
                 }
-            ]
+            ],
+            "unevaluatedProperties": true
         },
         "tests": {
             "s1SubsetEqOfs2": true,
@@ -949,55 +981,33 @@
         "id": 25,
         "schema1": {
             "type": "object",
-            "properties": {
-                "foo": {
-                    "type": "object",
-                    "properties": {
-                        "bar": {
-                            "type": "string"
-                        }
-                    },
-                    "unevaluatedProperties": false
-                }
-            },
-            "anyOf": [
+            "allOf": [
                 {
                     "properties": {
                         "foo": {
-                            "properties": {
-                                "faz": {
-                                    "type": "string"
-                                }
-                            }
+                            "type": "string"
                         }
-                    }
+                    },
+                    "unevaluatedProperties": true
+                },
+                {
+                    "unevaluatedProperties": false
                 }
             ]
         },
         "schema2": {
             "type": "object",
-            "properties": {
-                "foo": {
-                    "type": "object",
-                    "properties": {
-                        "bar": {
-                            "type": "string"
-                        }
-                    },
-                    "unevaluatedProperties": false
-                }
-            },
-            "anyOf": [
+            "allOf": [
                 {
                     "properties": {
                         "foo": {
-                            "properties": {
-                                "faz": {
-                                    "type": "string"
-                                }
-                            }
+                            "type": "string"
                         }
-                    }
+                    },
+                    "unevaluatedProperties": true
+                },
+                {
+                    "unevaluatedProperties": false
                 }
             ]
         },
@@ -1012,6 +1022,106 @@
             "type": "object",
             "allOf": [
                 {
+                    "unevaluatedProperties": true
+                },
+                {
+                    "properties": {
+                        "foo": {
+                            "type": "string"
+                        }
+                    },
+                    "unevaluatedProperties": false
+                }
+            ]
+        },
+        "schema2": {
+            "type": "object",
+            "allOf": [
+                {
+                    "unevaluatedProperties": true
+                },
+                {
+                    "properties": {
+                        "foo": {
+                            "type": "string"
+                        }
+                    },
+                    "unevaluatedProperties": false
+                }
+            ]
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 27,
+        "schema1": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "object",
+                    "properties": {
+                        "bar": {
+                            "type": "string"
+                        }
+                    },
+                    "unevaluatedProperties": false
+                }
+            },
+            "anyOf": [
+                {
+                    "properties": {
+                        "foo": {
+                            "properties": {
+                                "faz": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "schema2": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "object",
+                    "properties": {
+                        "bar": {
+                            "type": "string"
+                        }
+                    },
+                    "unevaluatedProperties": false
+                }
+            },
+            "anyOf": [
+                {
+                    "properties": {
+                        "foo": {
+                            "properties": {
+                                "faz": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 28,
+        "schema1": {
+            "type": "object",
+            "allOf": [
+                {
                     "properties": {
                         "foo": true
                     },
@@ -1050,7 +1160,7 @@
         }
     },
     {
-        "id": 27,
+        "id": 29,
         "schema1": {
             "type": "object",
             "allOf": [

@@ -1,0 +1,670 @@
+[
+    {
+        "id": 1,
+        "schema1": {
+            "const": [
+                3,
+                4,
+                5
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 2,
+        "schema1": {
+            "const": [
+                3,
+                4,
+                6
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 3,
+        "schema1": {
+            "const": [
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 4,
+        "schema1": {
+            "const": [
+                2,
+                3,
+                4
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 5,
+        "schema1": {
+            "const": []
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 6,
+        "schema1": {
+            "const": {
+                "a": 3,
+                "b": 4,
+                "c": 5
+            }
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 7,
+        "schema1": {
+            "const": {
+                "a": 3,
+                "b": 4,
+                "c": 6
+            }
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 8,
+        "schema1": {
+            "const": {
+                "a": 3,
+                "b": 4,
+                "c": 5,
+                "d": 6
+            }
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 9,
+        "schema1": {
+            "const": {
+                "a": 2,
+                "b": 3,
+                "c": 4
+            }
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 10,
+        "schema1": {
+            "const": {}
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 11,
+        "schema1": {
+            "const": 42
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 12,
+        "schema1": {
+            "const": [
+                3,
+                4,
+                5
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "const": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 13,
+        "schema1": {
+            "const": [
+                3,
+                4,
+                5,
+                5
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "const": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 14,
+        "schema1": {
+            "const": [
+                1,
+                2,
+                3,
+                4
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "const": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 15,
+        "schema1": {
+            "const": {
+                "a": 3,
+                "b": 4,
+                "c": 5
+            }
+        },
+        "schema2": {
+            "contains": {
+                "const": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 16,
+        "schema1": {
+            "const": {
+                "a": 3,
+                "b": 4,
+                "c": 5,
+                "d": 5
+            }
+        },
+        "schema2": {
+            "contains": {
+                "const": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 17,
+        "schema1": {
+            "const": {
+                "a": 1,
+                "b": 2,
+                "c": 3,
+                "d": 4
+            }
+        },
+        "schema2": {
+            "contains": {
+                "const": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 18,
+        "schema1": {
+            "const": [
+                "foo"
+            ]
+        },
+        "schema2": {
+            "contains": true
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 19,
+        "schema1": {
+            "const": []
+        },
+        "schema2": {
+            "contains": true
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 20,
+        "schema1": {
+            "const": {
+                "a": "foo"
+            }
+        },
+        "schema2": {
+            "contains": true
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 21,
+        "schema1": {
+            "const": {}
+        },
+        "schema2": {
+            "contains": true
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 22,
+        "schema1": {
+            "const": [
+                "foo"
+            ]
+        },
+        "schema2": {
+            "contains": false
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 23,
+        "schema1": {
+            "const": []
+        },
+        "schema2": {
+            "contains": false
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 24,
+        "schema1": {
+            "const": [
+                "foo"
+            ]
+        },
+        "schema2": {
+            "contains": false
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 25,
+        "schema1": {
+            "const": {}
+        },
+        "schema2": {
+            "contains": false
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 26,
+        "schema1": {
+            "const": "contains does not apply to strings"
+        },
+        "schema2": {
+            "contains": false
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 27,
+        "schema1": {
+            "const": [
+                2,
+                4,
+                8
+            ]
+        },
+        "schema2": {
+            "additionalProperties": {
+                "multipleOf": 2
+            },
+            "items": {
+                "multipleOf": 2
+            },
+            "contains": {
+                "multipleOf": 3
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 28,
+        "schema1": {
+            "const": [
+                3,
+                6,
+                9
+            ]
+        },
+        "schema2": {
+            "additionalProperties": {
+                "multipleOf": 2
+            },
+            "items": {
+                "multipleOf": 2
+            },
+            "contains": {
+                "multipleOf": 3
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 29,
+        "schema1": {
+            "const": [
+                6,
+                12
+            ]
+        },
+        "schema2": {
+            "additionalProperties": {
+                "multipleOf": 2
+            },
+            "items": {
+                "multipleOf": 2
+            },
+            "contains": {
+                "multipleOf": 3
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 30,
+        "schema1": {
+            "const": [
+                1,
+                5
+            ]
+        },
+        "schema2": {
+            "additionalProperties": {
+                "multipleOf": 2
+            },
+            "items": {
+                "multipleOf": 2
+            },
+            "contains": {
+                "multipleOf": 3
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 31,
+        "schema1": {
+            "const": {
+                "a": 2,
+                "b": 4,
+                "c": 8
+            }
+        },
+        "schema2": {
+            "additionalProperties": {
+                "multipleOf": 2
+            },
+            "items": {
+                "multipleOf": 2
+            },
+            "contains": {
+                "multipleOf": 3
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 32,
+        "schema1": {
+            "const": {
+                "a": 3,
+                "b": 6,
+                "c": 9
+            }
+        },
+        "schema2": {
+            "additionalProperties": {
+                "multipleOf": 2
+            },
+            "items": {
+                "multipleOf": 2
+            },
+            "contains": {
+                "multipleOf": 3
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 33,
+        "schema1": {
+            "const": {
+                "a": 6,
+                "b": 12
+            }
+        },
+        "schema2": {
+            "additionalProperties": {
+                "multipleOf": 2
+            },
+            "items": {
+                "multipleOf": 2
+            },
+            "contains": {
+                "multipleOf": 3
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 34,
+        "schema1": {
+            "const": {
+                "a": 1,
+                "b": 5
+            }
+        },
+        "schema2": {
+            "additionalProperties": {
+                "multipleOf": 2
+            },
+            "items": {
+                "multipleOf": 2
+            },
+            "contains": {
+                "multipleOf": 3
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 35,
+        "schema1": {
+            "const": [
+                "foo"
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "if": false,
+                "else": true
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 36,
+        "schema1": {
+            "const": []
+        },
+        "schema2": {
+            "contains": {
+                "if": false,
+                "else": true
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 37,
+        "schema1": {
+            "const": {
+                "a": "foo"
+            }
+        },
+        "schema2": {
+            "contains": {
+                "if": false,
+                "else": true
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 38,
+        "schema1": {
+            "const": {}
+        },
+        "schema2": {
+            "contains": {
+                "if": false,
+                "else": true
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    }
+]

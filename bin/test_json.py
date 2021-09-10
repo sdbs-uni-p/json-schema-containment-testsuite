@@ -96,39 +96,7 @@ class SanityTests(unittest.TestCase):
             except jsonschema.ValidationError as error:
                 self.fail(str(error))
 
-def main(arguments):
-    if arguments.command == "check":
-        suite = unittest.TestLoader().loadTestsFromTestCase(SanityTests)
-        result = unittest.TextTestRunner(verbosity=2).run(suite)
-        sys.exit(not result.wasSuccessful())
-    elif arguments.command == "flatten":
-        selected_cases = [case for case in cases(collect(arguments.version))]
-
-        if arguments.randomize:
-            random.shuffle(selected_cases)
-
-        json.dump(selected_cases, sys.stdout, indent=4, sort_keys=True)
-
-parser = argparse.ArgumentParser(
-    description="JSON Schema Test Suite utilities",
-)
-subparsers = parser.add_subparsers(help="utility commands", dest="command")
-
-check = subparsers.add_parser("check", help="Sanity check the test suite.")
-
-flatten = subparsers.add_parser(
-    "flatten",
-    help="Output a flattened file containing a selected version's test cases."
-)
-flatten.add_argument(
-    "--randomize",
-    action="store_true",
-    help="Randomize the order of the outputted cases.",
-)
-flatten.add_argument(
-    "version", help="The directory containing the version to output",
-)
-
 if __name__ == "__main__":
-    main(parser.parse_args())
-
+    suite = unittest.TestLoader().loadTestsFromTestCase(SanityTests)
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    sys.exit(not result.wasSuccessful())

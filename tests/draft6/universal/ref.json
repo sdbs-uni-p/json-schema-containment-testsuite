@@ -254,6 +254,62 @@
         "schema1": {
             "anyOf": [
                 {
+                    "$id": "http://localhost:1234/sibling_id/base/",
+                    "definitions": {
+                        "foo": {
+                            "$id": "http://localhost:1234/sibling_id/foo.json",
+                            "minimum": 2
+                        },
+                        "base_foo": {
+                            "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                            "$id": "foo.json",
+                            "minimum": 5
+                        }
+                    },
+                    "allOf": [
+                        {
+                            "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                            "$id": "http://localhost:1234/sibling_id/",
+                            "$ref": "foo.json"
+                        }
+                    ]
+                },
+                {
+                    "$id": "http://localhost:1234/sibling_id/base/1",
+                    "definitions": {
+                        "foo": {
+                            "$id": "http://localhost:1234/sibling_id/foo1.json",
+                            "minimum": 2
+                        },
+                        "base_foo": {
+                            "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                            "$id": "foo1.json",
+                            "minimum": 5
+                        }
+                    },
+                    "not": {
+                        "allOf": [
+                            {
+                                "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                                "$id": "http://localhost:1234/sibling_id/1",
+                                "$ref": "foo.json1"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "schema2": true,
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 8,
+        "schema1": {
+            "anyOf": [
+                {
                     "$ref": "http://json-schema.org/draft-06/schema#"
                 },
                 {
@@ -270,7 +326,7 @@
         }
     },
     {
-        "id": 8,
+        "id": 9,
         "schema1": {
             "anyOf": [
                 {
@@ -298,7 +354,7 @@
         }
     },
     {
-        "id": 9,
+        "id": 10,
         "schema1": {
             "anyOf": [
                 {
@@ -336,40 +392,6 @@
         }
     },
     {
-        "id": 10,
-        "schema1": {
-            "anyOf": [
-                {
-                    "allOf": [
-                        {
-                            "$ref": "#/anyOf/0/definitions/bool"
-                        }
-                    ],
-                    "definitions": {
-                        "bool": true
-                    }
-                },
-                {
-                    "definitions": {
-                        "bool": true
-                    },
-                    "not": {
-                        "allOf": [
-                            {
-                                "$ref": "#/anyOf/1/definitions/bool"
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        "schema2": true,
-        "tests": {
-            "s1SubsetEqOfs2": true,
-            "s2SubsetEqOfs1": true
-        }
-    },
-    {
         "id": 11,
         "schema1": {
             "anyOf": [
@@ -380,12 +402,12 @@
                         }
                     ],
                     "definitions": {
-                        "bool": false
+                        "bool": true
                     }
                 },
                 {
                     "definitions": {
-                        "bool": false
+                        "bool": true
                     },
                     "not": {
                         "allOf": [
@@ -405,6 +427,40 @@
     },
     {
         "id": 12,
+        "schema1": {
+            "anyOf": [
+                {
+                    "allOf": [
+                        {
+                            "$ref": "#/anyOf/0/definitions/bool"
+                        }
+                    ],
+                    "definitions": {
+                        "bool": false
+                    }
+                },
+                {
+                    "definitions": {
+                        "bool": false
+                    },
+                    "not": {
+                        "allOf": [
+                            {
+                                "$ref": "#/anyOf/1/definitions/bool"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "schema2": true,
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 13,
         "schema1": {
             "anyOf": [
                 {
@@ -494,7 +550,7 @@
         }
     },
     {
-        "id": 13,
+        "id": 14,
         "schema1": {
             "anyOf": [
                 {
@@ -532,7 +588,7 @@
         }
     },
     {
-        "id": 14,
+        "id": 15,
         "schema1": {
             "anyOf": [
                 {
@@ -572,7 +628,7 @@
         }
     },
     {
-        "id": 15,
+        "id": 16,
         "schema1": {
             "anyOf": [
                 {
@@ -624,7 +680,7 @@
         }
     },
     {
-        "id": 16,
+        "id": 17,
         "schema1": {
             "anyOf": [
                 {
@@ -651,6 +707,142 @@
                                 "$ref": "#/anyOf/1/definitions/a_string"
                             }
                         ]
+                    }
+                }
+            ]
+        },
+        "schema2": true,
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 18,
+        "schema1": {
+            "anyOf": [
+                {
+                    "$id": "http://example.com/schema-relative-uri-defs1.json",
+                    "properties": {
+                        "foo": {
+                            "$id": "schema-relative-uri-defs2.json",
+                            "definitions": {
+                                "inner": {
+                                    "properties": {
+                                        "bar": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "allOf": [
+                                {
+                                    "$ref": "#/anyOf/0/definitions/inner"
+                                }
+                            ]
+                        }
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "schema-relative-uri-defs2.json"
+                        }
+                    ]
+                },
+                {
+                    "$id": "http://example.com/schema-relative-uri-defs11.json",
+                    "allOf": [
+                        {
+                            "$ref": "schema-relative-uri-defs2.json1"
+                        }
+                    ],
+                    "not": {
+                        "properties": {
+                            "foo": {
+                                "$id": "schema-relative-uri-defs21.json",
+                                "definitions": {
+                                    "inner": {
+                                        "properties": {
+                                            "bar": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "allOf": [
+                                    {
+                                        "$ref": "#/anyOf/1/definitions/inner"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "schema2": true,
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 19,
+        "schema1": {
+            "anyOf": [
+                {
+                    "$id": "http://example.com/schema-refs-absolute-uris-defs1.json",
+                    "properties": {
+                        "foo": {
+                            "$id": "http://example.com/schema-refs-absolute-uris-defs2.json",
+                            "definitions": {
+                                "inner": {
+                                    "properties": {
+                                        "bar": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "allOf": [
+                                {
+                                    "$ref": "#/anyOf/0/definitions/inner"
+                                }
+                            ]
+                        }
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "schema-refs-absolute-uris-defs2.json"
+                        }
+                    ]
+                },
+                {
+                    "$id": "http://example.com/schema-refs-absolute-uris-defs11.json",
+                    "allOf": [
+                        {
+                            "$ref": "schema-refs-absolute-uris-defs2.json1"
+                        }
+                    ],
+                    "not": {
+                        "properties": {
+                            "foo": {
+                                "$id": "http://example.com/schema-refs-absolute-uris-defs21.json",
+                                "definitions": {
+                                    "inner": {
+                                        "properties": {
+                                            "bar": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "allOf": [
+                                    {
+                                        "$ref": "#/anyOf/1/definitions/inner"
+                                    }
+                                ]
+                            }
+                        }
                     }
                 }
             ]

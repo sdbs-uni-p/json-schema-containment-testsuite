@@ -528,5 +528,87 @@
             "s1SubsetEqOfs2": true,
             "s2SubsetEqOfs1": true
         }
+    },
+    {
+        "id": 9,
+        "schema1": {
+            "allOf": [
+                {
+                    "$id": "main.json",
+                    "$defs": {
+                        "inner": {
+                            "$id": "inner.json",
+                            "$recursiveAnchor": true,
+                            "title": "inner",
+                            "additionalProperties": {
+                                "$recursiveRef": "#"
+                            }
+                        }
+                    },
+                    "if": {
+                        "propertyNames": {
+                            "pattern": "^[a-m]"
+                        }
+                    },
+                    "then": {
+                        "title": "any type of node",
+                        "$id": "anyLeafNode.json",
+                        "$recursiveAnchor": true,
+                        "$ref": "main.json#/$defs/inner"
+                    },
+                    "else": {
+                        "title": "integer node",
+                        "$id": "integerNode.json",
+                        "$recursiveAnchor": true,
+                        "type": [
+                            "object",
+                            "integer"
+                        ],
+                        "$ref": "main.json#/$defs/inner"
+                    }
+                },
+                {
+                    "$id": "main1.json",
+                    "$defs": {
+                        "inner": {
+                            "$id": "inner1.json",
+                            "$recursiveAnchor": true,
+                            "title": "inner",
+                            "additionalProperties": {
+                                "$recursiveRef": "#"
+                            }
+                        }
+                    },
+                    "not": {
+                        "if": {
+                            "propertyNames": {
+                                "pattern": "^[a-m]"
+                            }
+                        },
+                        "then": {
+                            "title": "any type of node",
+                            "$id": "anyLeafNode1.json",
+                            "$recursiveAnchor": true,
+                            "$ref": "main1.json#/$defs/inner"
+                        },
+                        "else": {
+                            "title": "integer node",
+                            "$id": "integerNode1.json",
+                            "$recursiveAnchor": true,
+                            "type": [
+                                "object",
+                                "integer"
+                            ],
+                            "$ref": "main1.json#/$defs/inner"
+                        }
+                    }
+                }
+            ]
+        },
+        "schema2": false,
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
     }
 ]

@@ -98,6 +98,54 @@
         "id": 7,
         "schema1": {
             "const": {
+                "a": {},
+                "aa": {},
+                "aaa": {}
+            }
+        },
+        "schema2": {
+            "propertyNames": {
+                "pattern": "^a+$"
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 8,
+        "schema1": {
+            "const": {
+                "aaA": {}
+            }
+        },
+        "schema2": {
+            "propertyNames": {
+                "pattern": "^a+$"
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 9,
+        "schema1": {
+            "const": {}
+        },
+        "schema2": {
+            "propertyNames": {
+                "pattern": "^a+$"
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 10,
+        "schema1": {
+            "const": {
                 "foo": 1
             }
         },
@@ -109,7 +157,7 @@
         }
     },
     {
-        "id": 8,
+        "id": 11,
         "schema1": {
             "const": {}
         },
@@ -121,7 +169,7 @@
         }
     },
     {
-        "id": 9,
+        "id": 12,
         "schema1": {
             "const": {
                 "foo": 1
@@ -135,7 +183,7 @@
         }
     },
     {
-        "id": 10,
+        "id": 13,
         "schema1": {
             "const": {}
         },

@@ -202,5 +202,17 @@
         "tests": {
             "s1SubsetEqOfs2": false
         }
+    },
+    {
+        "id": 18,
+        "schema1": {
+            "const": "P\u09e8Y"
+        },
+        "schema2": {
+            "format": "duration"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
     }
 ]

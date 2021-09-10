@@ -254,6 +254,62 @@
         "schema1": {
             "anyOf": [
                 {
+                    "id": "http://localhost:1234/sibling_id/base/",
+                    "definitions": {
+                        "foo": {
+                            "id": "http://localhost:1234/sibling_id/foo.json",
+                            "minimum": 2
+                        },
+                        "base_foo": {
+                            "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                            "id": "foo.json",
+                            "minimum": 5
+                        }
+                    },
+                    "allOf": [
+                        {
+                            "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                            "id": "http://localhost:1234/sibling_id/",
+                            "$ref": "foo.json"
+                        }
+                    ]
+                },
+                {
+                    "id": "http://localhost:1234/sibling_id/base/1",
+                    "definitions": {
+                        "foo": {
+                            "id": "http://localhost:1234/sibling_id/foo1.json",
+                            "minimum": 2
+                        },
+                        "base_foo": {
+                            "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                            "id": "foo1.json",
+                            "minimum": 5
+                        }
+                    },
+                    "not": {
+                        "allOf": [
+                            {
+                                "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                                "id": "http://localhost:1234/sibling_id/1",
+                                "$ref": "foo.json1"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "schema2": {},
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 8,
+        "schema1": {
+            "anyOf": [
+                {
                     "$ref": "http://json-schema.org/draft-04/schema#"
                 },
                 {
@@ -270,7 +326,7 @@
         }
     },
     {
-        "id": 8,
+        "id": 9,
         "schema1": {
             "anyOf": [
                 {
@@ -298,7 +354,7 @@
         }
     },
     {
-        "id": 9,
+        "id": 10,
         "schema1": {
             "anyOf": [
                 {
@@ -336,7 +392,7 @@
         }
     },
     {
-        "id": 10,
+        "id": 11,
         "schema1": {
             "anyOf": [
                 {
@@ -426,7 +482,7 @@
         }
     },
     {
-        "id": 11,
+        "id": 12,
         "schema1": {
             "anyOf": [
                 {
@@ -464,7 +520,7 @@
         }
     },
     {
-        "id": 12,
+        "id": 13,
         "schema1": {
             "anyOf": [
                 {
@@ -504,7 +560,7 @@
         }
     },
     {
-        "id": 13,
+        "id": 14,
         "schema1": {
             "anyOf": [
                 {
@@ -556,7 +612,7 @@
         }
     },
     {
-        "id": 14,
+        "id": 15,
         "schema1": {
             "anyOf": [
                 {

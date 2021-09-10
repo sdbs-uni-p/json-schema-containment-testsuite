@@ -298,6 +298,64 @@
         "schema1": {
             "allOf": [
                 {
+                    "id": "http://localhost:1234/sibling_id/base/",
+                    "definitions": {
+                        "foo": {
+                            "id": "http://localhost:1234/sibling_id/foo.json",
+                            "minimum": 2
+                        },
+                        "base_foo": {
+                            "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                            "id": "foo.json",
+                            "minimum": 5
+                        }
+                    },
+                    "allOf": [
+                        {
+                            "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                            "id": "http://localhost:1234/sibling_id/",
+                            "$ref": "foo.json"
+                        }
+                    ]
+                },
+                {
+                    "id": "http://localhost:1234/sibling_id/base/",
+                    "definitions": {
+                        "foo": {
+                            "id": "http://localhost:1234/sibling_id/foo.json",
+                            "minimum": 2
+                        },
+                        "base_foo": {
+                            "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                            "id": "foo.json",
+                            "minimum": 5
+                        }
+                    },
+                    "not": {
+                        "allOf": [
+                            {
+                                "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                                "id": "http://localhost:1234/sibling_id/",
+                                "$ref": "foo.json1"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "schema2": {
+            "not": {}
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 9,
+        "schema1": {
+            "allOf": [
+                {
                     "$ref": "http://json-schema.org/draft-03/schema#"
                 },
                 {
@@ -316,7 +374,7 @@
         }
     },
     {
-        "id": 9,
+        "id": 10,
         "schema1": {
             "allOf": [
                 {

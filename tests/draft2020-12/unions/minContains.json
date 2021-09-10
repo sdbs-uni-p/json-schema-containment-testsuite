@@ -112,5 +112,30 @@
         "tests": {
             "s1SubsetEqOfs2": true
         }
+    },
+    {
+        "id": 5,
+        "schema1": {
+            "anyOf": [
+                {
+                    "const": []
+                },
+                {
+                    "const": [
+                        1
+                    ]
+                }
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "const": 1
+            },
+            "minContains": 0,
+            "maxContains": 1
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
     }
 ]

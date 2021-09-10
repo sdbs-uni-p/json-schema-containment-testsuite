@@ -4,6 +4,7 @@ import fnmatch
 import json
 import test_json
 import copy
+import shutil
 
 try:
     import jsonschema.validators
@@ -253,12 +254,16 @@ def dict_definition_rebuild(schema):
         elif k == "if":
             temp = {}
             temp["if"] = v
-            temp["then"] = schema["then"]
-            temp["else"] = schema["else"]
+            if "then" in schema.keys():
+                temp["then"] = schema["then"]
+            if "else" in schema.keys():
+                temp["else"] = schema["else"]
             schema["not"] = temp
             schema.pop("if")
-            schema.pop("then")
-            schema.pop("else")
+            if "then" in schema.keys():
+                schema.pop("then")
+            if "else" in schema.keys():
+                schema.pop("else")
             return schema
         elif isinstance(v,dict):
             if dict_get(v, "$ref", None) == "rebuild" and k != "definitions" and k != "$defs":
@@ -387,13 +392,11 @@ def read_and_write_valid_schemas(old_path,new_path,file_name, draft):
     msg = []
     count = 1
     for case in cases(old_path):
-        test_description = "/" + draft + "/valid/" + file_name + ": " + case["description"]
         test_data = case["data"]
         test_valid = case["valid"]
         test_schema = case["schema"]
         testcase = {
             "id": count,
-            "description": test_description,
             "schema1": {
                 "const": test_data
             },
@@ -411,11 +414,9 @@ def read_and_write_reflexivity(old_path,new_path,file_name, draft):
     msg = []
     count = 1
     for case in cases_not_in_tests(old_path, draft):
-        test_description = "/" + draft + "/reflexive/" + file_name + ": " + case["description"]
         test_schema = case["schema"]
         testcase = {
             "id": count,
-            "description": test_description,
             "schema1": test_schema,
             "schema2": test_schema,
             "tests": {
@@ -458,10 +459,8 @@ def read_and_write_false_schemas(old_path,new_path,file_name, draft):
         else:
             schema2 = False
         
-        test_description = "/" + draft + "/unsatisfiable/" + file_name + ": " + case["description"]
         testcase = {
             "id": count,
-            "description": test_description,
             "schema1": {
                 "allOf": [
                     test_schema1,
@@ -511,10 +510,8 @@ def read_and_write_true_schemas(old_path,new_path,file_name, draft):
             }
         else:
             schema2 = True
-        test_description = "/" + draft + "/universal/" + file_name + ": " + case["description"]
         testcase = {
             "id": count,
-            "description": test_description,
             "schema1": {
                 "anyOf": [
                     test_schema1,
@@ -564,13 +561,11 @@ def read_and_write_invalid_witnesses(old_path,new_path,file_name, draft):
                 "not": case["schema"]
             }
             
-        test_description = "/" + draft + "/nonvalid/" + file_name + ": " + case["description"]
         test_data = case["data"]
         test_valid = case["valid"]
         if test_valid == True:
             testcase = {
                 "id": count,
-                "description": test_description,
                 "schema1": {
                     "const": test_data
                 },
@@ -590,12 +585,10 @@ def read_and_write_union_schemas(old_path,new_path,file_name, draft):
     count = 1
     for case in cases_union_tests(old_path):
         if len(case["testsUnion"]) >= 2:
-            test_description = "/" + draft + "/unions/" + file_name + ": " + case["description"]
             test_schema = case["schema"]
             test_union = case["testsUnion"]
             testcase = {
                 "id": count,
-                "description": test_description,
                 "schema1": {
                     "anyOf": test_union
                     
@@ -619,6 +612,9 @@ def recursive_create_testsuites(old_path,new_path,testsuites_type, draft):
         # Create folders recursively
         if os.path.isdir(folder_path_branch) and folder is not None:
             new_folder_path_branch = os.path.join(new_path, folder)
+            if os.path.exists(new_folder_path_branch):
+                # file or folder exist
+                shutil.rmtree(new_folder_path_branch)
             os.makedirs(new_folder_path_branch)
             recursive_create_testsuites(folder_path_branch,new_folder_path_branch,testsuites_type, draft)
         # If in the old_path is json files, then take it as a template to generate our new test suite
@@ -665,4 +661,3 @@ def read_testsuites():
 
 if __name__ == "__main__":
     read_testsuites()
-

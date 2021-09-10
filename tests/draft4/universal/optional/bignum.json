@@ -44,46 +44,6 @@
         "schema1": {
             "anyOf": [
                 {
-                    "type": "integer"
-                },
-                {
-                    "not": {
-                        "type": "integer"
-                    }
-                }
-            ]
-        },
-        "schema2": {},
-        "tests": {
-            "s1SubsetEqOfs2": true,
-            "s2SubsetEqOfs1": true
-        }
-    },
-    {
-        "id": 4,
-        "schema1": {
-            "anyOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "not": {
-                        "type": "number"
-                    }
-                }
-            ]
-        },
-        "schema2": {},
-        "tests": {
-            "s1SubsetEqOfs2": true,
-            "s2SubsetEqOfs1": true
-        }
-    },
-    {
-        "id": 5,
-        "schema1": {
-            "anyOf": [
-                {
                     "type": "string"
                 },
                 {
@@ -100,7 +60,7 @@
         }
     },
     {
-        "id": 6,
+        "id": 4,
         "schema1": {
             "anyOf": [
                 {
@@ -120,7 +80,7 @@
         }
     },
     {
-        "id": 7,
+        "id": 5,
         "schema1": {
             "anyOf": [
                 {
@@ -142,7 +102,7 @@
         }
     },
     {
-        "id": 8,
+        "id": 6,
         "schema1": {
             "anyOf": [
                 {
@@ -162,7 +122,7 @@
         }
     },
     {
-        "id": 9,
+        "id": 7,
         "schema1": {
             "anyOf": [
                 {

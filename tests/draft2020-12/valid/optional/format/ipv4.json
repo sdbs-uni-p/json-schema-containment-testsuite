@@ -94,5 +94,17 @@
         "tests": {
             "s1SubsetEqOfs2": true
         }
+    },
+    {
+        "id": 9,
+        "schema1": {
+            "const": "1\u09e87.0.0.1"
+        },
+        "schema2": {
+            "format": "ipv4"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
     }
 ]

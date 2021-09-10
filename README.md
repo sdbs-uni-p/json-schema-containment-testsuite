@@ -24,25 +24,28 @@ Inside each `.json` file is a single array containing objects. It's easiest to i
 ```json
 [
     {
-        "id": "1",
-        "description": "not-pushing rules: not const with true",
+        "id": 1,
         "schema1": {
-            "not": {
-                "const": true
-            }
-        },
-        "schema2": {
             "anyOf": [
                 {
-                    "not": {
-                        "type": "boolean"
-                    }
+                    "enum": [
+                        1,
+                        2,
+                        3
+                    ]
                 },
                 {
-                    "const": false
+                    "not": {
+                        "enum": [
+                            1,
+                            2,
+                            3
+                        ]
+                    }
                 }
             ]
         },
+        "schema2": true,
         "tests": {
             "s1SubsetEqOfs2": true,
             "s2SubsetEqOfs1": true
@@ -52,7 +55,6 @@ Inside each `.json` file is a single array containing objects. It's easiest to i
 ```
 In short, each object has the following attributes:
 * id: Uniquely identifies a set of tests within the same file.
-* description: The test set description.
 * schema1: The first schema for JSON Schema containment checking.
 * schema2: The second schema for JSON Schema containment checking.
 * tests: The groundtruth of tests.
@@ -68,37 +70,48 @@ directory. This is:
 1. `optional/`: Contains tests that are considered optional.
 
 # Prerequisites
+Python 3 is used for test generation.
 
-We use Node 14.151 and Python 3.7 in this project.
-
-## Once you've cloned the repository:
-Fetch the submodules we need in this repository:
+## Cloning the repository
 ```shell
-// Get the submodule
-git submodule update --init --recursive
-
-// Update them to the latest master branch
-git submodule foreach git pull origin master
+// Clone repository with submodules
+git clone --recurse-submodules https://github.com/sdbs-uni-p/json-schema-containment-testsuite.git
 ```
 
+or
+
+```shell
+// Clone repository
+git clone https://github.com/sdbs-uni-p/json-schema-containment-testsuite.git
+
+// Get the submodules
+git submodule update --init --recursive
+```
 ## Generate new tests by yourself
 To regenerate a new version of the test suite as shown in the `tests` folder:
 
-* Delete all the folders under `tests` directory in the main repository;
+* Delete all folders under `tests` directory in the main repository;
 
-* Run the following commands to generate the first part of the test suite based on [`JSON Schema Test Suite`](https://github.com/json-schema-org/JSON-Schema-Test-Suite):
+* Run the following commands to generate the test suite based on [`JSON Schema Test Suite`](https://github.com/json-schema-org/JSON-Schema-Test-Suite):
 ```shell
+// Update submodules (JSON-Schema-Test-Suite) to latest commit
+git submodule foreach git pull origin master
+
+// Generate tests
 python bin/testsuite_generation.py
 ```
 
-## Validate JSON Schema in `tests`
+## Validate generetaed tests
+Validates all tests in the `tests` directory.
+
 ```shell
-python bin/test_json.py check
+python bin/test_json.py
 ``` 
-Then you can get the results of the validation in the terminal.
 
 ## Cititation
-To refer to this test suite in a publication, please use this BibTeX entry.
+There is a demo paper for this test suite, presented at [ER 2021](https://www.er2021.org): [A Test Suite for JSON Schema Containment](http://ceur-ws.org/Vol-2958/paper4.pdf).
+
+To refer to this test suite in a publication, please cite the demo paper above and/or use this BibTex entry:
 ```BibTeX
 @Misc{jsc_test_suite,
   author =  {Lyes Attouche and Mohamed Amine Baazizi and Dario Colazzo and Yunchen Ding and Luca Escher and Michael Fruth and Giorgio Ghelli and Carlo Sartiani and Stefanie Scherzinger},

@@ -30,7 +30,7 @@
     {
         "id": 3,
         "schema1": {
-            "const": "15:59:60-08:00"
+            "const": "23:59:60+00:00"
         },
         "schema2": {
             "not": {
@@ -44,7 +44,7 @@
     {
         "id": 4,
         "schema1": {
-            "const": "23:20:50.52Z"
+            "const": "01:29:60+01:30"
         },
         "schema2": {
             "not": {
@@ -58,7 +58,7 @@
     {
         "id": 5,
         "schema1": {
-            "const": "08:30:06.283185Z"
+            "const": "23:29:60+23:30"
         },
         "schema2": {
             "not": {
@@ -72,7 +72,7 @@
     {
         "id": 6,
         "schema1": {
-            "const": "08:30:06+00:20"
+            "const": "15:59:60-08:00"
         },
         "schema2": {
             "not": {
@@ -86,7 +86,7 @@
     {
         "id": 7,
         "schema1": {
-            "const": "08:30:06-08:00"
+            "const": "00:29:60-23:30"
         },
         "schema2": {
             "not": {
@@ -99,6 +99,62 @@
     },
     {
         "id": 8,
+        "schema1": {
+            "const": "23:20:50.52Z"
+        },
+        "schema2": {
+            "not": {
+                "format": "time"
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 9,
+        "schema1": {
+            "const": "08:30:06.283185Z"
+        },
+        "schema2": {
+            "not": {
+                "format": "time"
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 10,
+        "schema1": {
+            "const": "08:30:06+00:20"
+        },
+        "schema2": {
+            "not": {
+                "format": "time"
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 11,
+        "schema1": {
+            "const": "08:30:06-08:00"
+        },
+        "schema2": {
+            "not": {
+                "format": "time"
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 12,
         "schema1": {
             "const": "08:30:06z"
         },

@@ -48,50 +48,6 @@
         "schema1": {
             "allOf": [
                 {
-                    "type": "integer"
-                },
-                {
-                    "not": {
-                        "type": "integer"
-                    }
-                }
-            ]
-        },
-        "schema2": {
-            "not": {}
-        },
-        "tests": {
-            "s1SubsetEqOfs2": true,
-            "s2SubsetEqOfs1": true
-        }
-    },
-    {
-        "id": 4,
-        "schema1": {
-            "allOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "not": {
-                        "type": "number"
-                    }
-                }
-            ]
-        },
-        "schema2": {
-            "not": {}
-        },
-        "tests": {
-            "s1SubsetEqOfs2": true,
-            "s2SubsetEqOfs1": true
-        }
-    },
-    {
-        "id": 5,
-        "schema1": {
-            "allOf": [
-                {
                     "type": "string"
                 },
                 {
@@ -110,7 +66,7 @@
         }
     },
     {
-        "id": 6,
+        "id": 4,
         "schema1": {
             "allOf": [
                 {
@@ -132,7 +88,7 @@
         }
     },
     {
-        "id": 7,
+        "id": 5,
         "schema1": {
             "allOf": [
                 {
@@ -156,7 +112,7 @@
         }
     },
     {
-        "id": 8,
+        "id": 6,
         "schema1": {
             "allOf": [
                 {
@@ -178,7 +134,7 @@
         }
     },
     {
-        "id": 9,
+        "id": 7,
         "schema1": {
             "allOf": [
                 {

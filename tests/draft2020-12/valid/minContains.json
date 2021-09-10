@@ -393,5 +393,58 @@
         "tests": {
             "s1SubsetEqOfs2": true
         }
+    },
+    {
+        "id": 24,
+        "schema1": {
+            "const": []
+        },
+        "schema2": {
+            "contains": {
+                "const": 1
+            },
+            "minContains": 0,
+            "maxContains": 1
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 25,
+        "schema1": {
+            "const": [
+                1
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "const": 1
+            },
+            "minContains": 0,
+            "maxContains": 1
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 26,
+        "schema1": {
+            "const": [
+                1,
+                1
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "const": 1
+            },
+            "minContains": 0,
+            "maxContains": 1
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
     }
 ]

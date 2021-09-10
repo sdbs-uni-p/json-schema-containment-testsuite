@@ -610,6 +610,81 @@
         "id": 21,
         "schema1": {
             "const": {
+                "baz": "baz"
+            }
+        },
+        "schema2": {
+            "not": {
+                "type": "object",
+                "if": {
+                    "properties": {
+                        "foo": {
+                            "const": "then"
+                        }
+                    },
+                    "required": [
+                        "foo"
+                    ]
+                },
+                "else": {
+                    "properties": {
+                        "baz": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "baz"
+                    ]
+                },
+                "unevaluatedProperties": false
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 22,
+        "schema1": {
+            "const": {
+                "foo": "then",
+                "bar": "bar"
+            }
+        },
+        "schema2": {
+            "not": {
+                "type": "object",
+                "if": {
+                    "properties": {
+                        "foo": {
+                            "const": "then"
+                        }
+                    },
+                    "required": [
+                        "foo"
+                    ]
+                },
+                "then": {
+                    "properties": {
+                        "bar": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "bar"
+                    ]
+                },
+                "unevaluatedProperties": false
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 23,
+        "schema1": {
+            "const": {
                 "foo": "foo",
                 "bar": "bar"
             }
@@ -642,7 +717,7 @@
         }
     },
     {
-        "id": 22,
+        "id": 24,
         "schema1": {
             "const": {
                 "foo": "foo"
@@ -667,7 +742,7 @@
         }
     },
     {
-        "id": 23,
+        "id": 25,
         "schema1": {
             "const": {
                 "foo": "foo",
@@ -700,61 +775,6 @@
         }
     },
     {
-        "id": 24,
-        "schema1": {
-            "const": {
-                "foo": "foo"
-            }
-        },
-        "schema2": {
-            "not": {
-                "type": "object",
-                "properties": {
-                    "foo": {
-                        "type": "string"
-                    }
-                },
-                "allOf": [
-                    {
-                        "unevaluatedProperties": true
-                    }
-                ],
-                "unevaluatedProperties": false
-            }
-        },
-        "tests": {
-            "s1SubsetEqOfs2": false
-        }
-    },
-    {
-        "id": 25,
-        "schema1": {
-            "const": {
-                "foo": "foo",
-                "bar": "bar"
-            }
-        },
-        "schema2": {
-            "not": {
-                "type": "object",
-                "properties": {
-                    "foo": {
-                        "type": "string"
-                    }
-                },
-                "allOf": [
-                    {
-                        "unevaluatedProperties": true
-                    }
-                ],
-                "unevaluatedProperties": false
-            }
-        },
-        "tests": {
-            "s1SubsetEqOfs2": false
-        }
-    },
-    {
         "id": 26,
         "schema1": {
             "const": {
@@ -764,13 +784,13 @@
         "schema2": {
             "not": {
                 "type": "object",
+                "properties": {
+                    "foo": {
+                        "type": "string"
+                    }
+                },
                 "allOf": [
                     {
-                        "properties": {
-                            "foo": {
-                                "type": "string"
-                            }
-                        },
                         "unevaluatedProperties": true
                     }
                 ],
@@ -792,13 +812,13 @@
         "schema2": {
             "not": {
                 "type": "object",
+                "properties": {
+                    "foo": {
+                        "type": "string"
+                    }
+                },
                 "allOf": [
                     {
-                        "properties": {
-                            "foo": {
-                                "type": "string"
-                            }
-                        },
                         "unevaluatedProperties": true
                     }
                 ],
@@ -826,6 +846,61 @@
                                 "type": "string"
                             }
                         },
+                        "unevaluatedProperties": true
+                    }
+                ],
+                "unevaluatedProperties": false
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 29,
+        "schema1": {
+            "const": {
+                "foo": "foo",
+                "bar": "bar"
+            }
+        },
+        "schema2": {
+            "not": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "properties": {
+                            "foo": {
+                                "type": "string"
+                            }
+                        },
+                        "unevaluatedProperties": true
+                    }
+                ],
+                "unevaluatedProperties": false
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 30,
+        "schema1": {
+            "const": {
+                "foo": "foo"
+            }
+        },
+        "schema2": {
+            "not": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "properties": {
+                            "foo": {
+                                "type": "string"
+                            }
+                        },
                         "unevaluatedProperties": false
                     }
                 ],
@@ -837,7 +912,7 @@
         }
     },
     {
-        "id": 29,
+        "id": 31,
         "schema1": {
             "const": {
                 "foo": "foo"
@@ -866,7 +941,7 @@
         }
     },
     {
-        "id": 30,
+        "id": 32,
         "schema1": {
             "const": {
                 "foo": {
@@ -908,7 +983,7 @@
         }
     },
     {
-        "id": 31,
+        "id": 33,
         "schema1": {
             "const": {
                 "foo": 1
@@ -939,7 +1014,7 @@
         }
     },
     {
-        "id": 32,
+        "id": 34,
         "schema1": {
             "const": {
                 "bar": 1

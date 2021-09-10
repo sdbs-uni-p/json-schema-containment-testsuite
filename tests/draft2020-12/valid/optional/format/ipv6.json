@@ -346,5 +346,29 @@
         "tests": {
             "s1SubsetEqOfs2": false
         }
+    },
+    {
+        "id": 30,
+        "schema1": {
+            "const": "1:2:3:4:5:6:7:\u09ea"
+        },
+        "schema2": {
+            "format": "ipv6"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 31,
+        "schema1": {
+            "const": "1:2::192.16\u09ea.0.1"
+        },
+        "schema2": {
+            "format": "ipv6"
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
     }
 ]

@@ -210,10 +210,46 @@
     {
         "id": 7,
         "schema1": {
-            "$ref": "http://json-schema.org/draft-06/schema#"
+            "$id": "http://localhost:1234/sibling_id/base/",
+            "definitions": {
+                "foo": {
+                    "$id": "http://localhost:1234/sibling_id/foo.json",
+                    "minimum": 2
+                },
+                "base_foo": {
+                    "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                    "$id": "foo.json",
+                    "minimum": 5
+                }
+            },
+            "allOf": [
+                {
+                    "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                    "$id": "http://localhost:1234/sibling_id/",
+                    "$ref": "foo.json"
+                }
+            ]
         },
         "schema2": {
-            "$ref": "http://json-schema.org/draft-06/schema#"
+            "$id": "http://localhost:1234/sibling_id/base/",
+            "definitions": {
+                "foo": {
+                    "$id": "http://localhost:1234/sibling_id/foo.json",
+                    "minimum": 2
+                },
+                "base_foo": {
+                    "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                    "$id": "foo.json",
+                    "minimum": 5
+                }
+            },
+            "allOf": [
+                {
+                    "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                    "$id": "http://localhost:1234/sibling_id/",
+                    "$ref": "foo.json"
+                }
+            ]
         },
         "tests": {
             "s1SubsetEqOfs2": true,
@@ -223,18 +259,10 @@
     {
         "id": 8,
         "schema1": {
-            "properties": {
-                "$ref": {
-                    "type": "string"
-                }
-            }
+            "$ref": "http://json-schema.org/draft-06/schema#"
         },
         "schema2": {
-            "properties": {
-                "$ref": {
-                    "type": "string"
-                }
-            }
+            "$ref": "http://json-schema.org/draft-06/schema#"
         },
         "tests": {
             "s1SubsetEqOfs2": true,
@@ -246,11 +274,6 @@
         "schema1": {
             "properties": {
                 "$ref": {
-                    "$ref": "#/definitions/is-string"
-                }
-            },
-            "definitions": {
-                "is-string": {
                     "type": "string"
                 }
             }
@@ -258,11 +281,6 @@
         "schema2": {
             "properties": {
                 "$ref": {
-                    "$ref": "#/definitions/is-string"
-                }
-            },
-            "definitions": {
-                "is-string": {
                     "type": "string"
                 }
             }
@@ -275,23 +293,27 @@
     {
         "id": 10,
         "schema1": {
-            "allOf": [
-                {
-                    "$ref": "#/definitions/bool"
+            "properties": {
+                "$ref": {
+                    "$ref": "#/definitions/is-string"
                 }
-            ],
+            },
             "definitions": {
-                "bool": true
+                "is-string": {
+                    "type": "string"
+                }
             }
         },
         "schema2": {
-            "allOf": [
-                {
-                    "$ref": "#/definitions/bool"
+            "properties": {
+                "$ref": {
+                    "$ref": "#/definitions/is-string"
                 }
-            ],
+            },
             "definitions": {
-                "bool": true
+                "is-string": {
+                    "type": "string"
+                }
             }
         },
         "tests": {
@@ -308,6 +330,33 @@
                 }
             ],
             "definitions": {
+                "bool": true
+            }
+        },
+        "schema2": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/bool"
+                }
+            ],
+            "definitions": {
+                "bool": true
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 12,
+        "schema1": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/bool"
+                }
+            ],
+            "definitions": {
                 "bool": false
             }
         },
@@ -327,111 +376,80 @@
         }
     },
     {
-        "id": 12,
-        "schema1": {
-            "$id": "http://localhost:1234/tree",
-            "description": "tree of nodes",
-            "type": "object",
-            "properties": {
-                "meta": {
-                    "type": "string"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "node"
-                    }
-                }
-            },
-            "required": [
-                "meta",
-                "nodes"
-            ],
-            "definitions": {
-                "node": {
-                    "$id": "http://localhost:1234/node",
-                    "description": "node",
-                    "type": "object",
-                    "properties": {
-                        "value": {
-                            "type": "number"
-                        },
-                        "subtree": {
-                            "$ref": "tree"
-                        }
-                    },
-                    "required": [
-                        "value"
-                    ]
-                }
-            }
-        },
-        "schema2": {
-            "$id": "http://localhost:1234/tree",
-            "description": "tree of nodes",
-            "type": "object",
-            "properties": {
-                "meta": {
-                    "type": "string"
-                },
-                "nodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "node"
-                    }
-                }
-            },
-            "required": [
-                "meta",
-                "nodes"
-            ],
-            "definitions": {
-                "node": {
-                    "$id": "http://localhost:1234/node",
-                    "description": "node",
-                    "type": "object",
-                    "properties": {
-                        "value": {
-                            "type": "number"
-                        },
-                        "subtree": {
-                            "$ref": "tree"
-                        }
-                    },
-                    "required": [
-                        "value"
-                    ]
-                }
-            }
-        },
-        "tests": {
-            "s1SubsetEqOfs2": true,
-            "s2SubsetEqOfs1": true
-        }
-    },
-    {
         "id": 13,
         "schema1": {
+            "$id": "http://localhost:1234/tree",
+            "description": "tree of nodes",
+            "type": "object",
             "properties": {
-                "foo\"bar": {
-                    "$ref": "#/definitions/foo%22bar"
+                "meta": {
+                    "type": "string"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "node"
+                    }
                 }
             },
+            "required": [
+                "meta",
+                "nodes"
+            ],
             "definitions": {
-                "foo\"bar": {
-                    "type": "number"
+                "node": {
+                    "$id": "http://localhost:1234/node",
+                    "description": "node",
+                    "type": "object",
+                    "properties": {
+                        "value": {
+                            "type": "number"
+                        },
+                        "subtree": {
+                            "$ref": "tree"
+                        }
+                    },
+                    "required": [
+                        "value"
+                    ]
                 }
             }
         },
         "schema2": {
+            "$id": "http://localhost:1234/tree",
+            "description": "tree of nodes",
+            "type": "object",
             "properties": {
-                "foo\"bar": {
-                    "$ref": "#/definitions/foo%22bar"
+                "meta": {
+                    "type": "string"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "node"
+                    }
                 }
             },
+            "required": [
+                "meta",
+                "nodes"
+            ],
             "definitions": {
-                "foo\"bar": {
-                    "type": "number"
+                "node": {
+                    "$id": "http://localhost:1234/node",
+                    "description": "node",
+                    "type": "object",
+                    "properties": {
+                        "value": {
+                            "type": "number"
+                        },
+                        "subtree": {
+                            "$ref": "tree"
+                        }
+                    },
+                    "required": [
+                        "value"
+                    ]
                 }
             }
         },
@@ -443,6 +461,37 @@
     {
         "id": 14,
         "schema1": {
+            "properties": {
+                "foo\"bar": {
+                    "$ref": "#/definitions/foo%22bar"
+                }
+            },
+            "definitions": {
+                "foo\"bar": {
+                    "type": "number"
+                }
+            }
+        },
+        "schema2": {
+            "properties": {
+                "foo\"bar": {
+                    "$ref": "#/definitions/foo%22bar"
+                }
+            },
+            "definitions": {
+                "foo\"bar": {
+                    "type": "number"
+                }
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 15,
+        "schema1": {
             "allOf": [
                 {
                     "$ref": "#foo"
@@ -474,7 +523,7 @@
         }
     },
     {
-        "id": 15,
+        "id": 16,
         "schema1": {
             "$id": "http://localhost:1234/root",
             "allOf": [
@@ -519,7 +568,7 @@
         }
     },
     {
-        "id": 16,
+        "id": 17,
         "schema1": {
             "definitions": {
                 "a_string": {
@@ -541,6 +590,128 @@
             "enum": [
                 {
                     "$ref": "#/definitions/a_string"
+                }
+            ]
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 18,
+        "schema1": {
+            "$id": "http://example.com/schema-relative-uri-defs1.json",
+            "properties": {
+                "foo": {
+                    "$id": "schema-relative-uri-defs2.json",
+                    "definitions": {
+                        "inner": {
+                            "properties": {
+                                "bar": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/inner"
+                        }
+                    ]
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "schema-relative-uri-defs2.json"
+                }
+            ]
+        },
+        "schema2": {
+            "$id": "http://example.com/schema-relative-uri-defs1.json",
+            "properties": {
+                "foo": {
+                    "$id": "schema-relative-uri-defs2.json",
+                    "definitions": {
+                        "inner": {
+                            "properties": {
+                                "bar": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/inner"
+                        }
+                    ]
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "schema-relative-uri-defs2.json"
+                }
+            ]
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 19,
+        "schema1": {
+            "$id": "http://example.com/schema-refs-absolute-uris-defs1.json",
+            "properties": {
+                "foo": {
+                    "$id": "http://example.com/schema-refs-absolute-uris-defs2.json",
+                    "definitions": {
+                        "inner": {
+                            "properties": {
+                                "bar": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/inner"
+                        }
+                    ]
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "schema-refs-absolute-uris-defs2.json"
+                }
+            ]
+        },
+        "schema2": {
+            "$id": "http://example.com/schema-refs-absolute-uris-defs1.json",
+            "properties": {
+                "foo": {
+                    "$id": "http://example.com/schema-refs-absolute-uris-defs2.json",
+                    "definitions": {
+                        "inner": {
+                            "properties": {
+                                "bar": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/inner"
+                        }
+                    ]
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "schema-refs-absolute-uris-defs2.json"
                 }
             ]
         },

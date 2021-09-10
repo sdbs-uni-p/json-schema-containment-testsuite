@@ -19,6 +19,23 @@
     {
         "id": 2,
         "schema1": {
+            "propertyNames": {
+                "pattern": "^a+$"
+            }
+        },
+        "schema2": {
+            "propertyNames": {
+                "pattern": "^a+$"
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true,
+            "s2SubsetEqOfs1": true
+        }
+    },
+    {
+        "id": 3,
+        "schema1": {
             "propertyNames": true
         },
         "schema2": {
@@ -30,7 +47,7 @@
         }
     },
     {
-        "id": 3,
+        "id": 4,
         "schema1": {
             "propertyNames": false
         },

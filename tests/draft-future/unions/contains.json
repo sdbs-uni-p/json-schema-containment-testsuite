@@ -1,0 +1,191 @@
+[
+    {
+        "id": 1,
+        "schema1": {
+            "anyOf": [
+                {
+                    "const": [
+                        3,
+                        4,
+                        5
+                    ]
+                },
+                {
+                    "const": [
+                        3,
+                        4,
+                        6
+                    ]
+                },
+                {
+                    "const": [
+                        3,
+                        4,
+                        5,
+                        6
+                    ]
+                },
+                {
+                    "const": {
+                        "a": 3,
+                        "b": 4,
+                        "c": 5
+                    }
+                },
+                {
+                    "const": {
+                        "a": 3,
+                        "b": 4,
+                        "c": 6
+                    }
+                },
+                {
+                    "const": {
+                        "a": 3,
+                        "b": 4,
+                        "c": 5,
+                        "d": 6
+                    }
+                },
+                {
+                    "const": 42
+                }
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "minimum": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 2,
+        "schema1": {
+            "anyOf": [
+                {
+                    "const": [
+                        3,
+                        4,
+                        5
+                    ]
+                },
+                {
+                    "const": [
+                        3,
+                        4,
+                        5,
+                        5
+                    ]
+                },
+                {
+                    "const": {
+                        "a": 3,
+                        "b": 4,
+                        "c": 5
+                    }
+                },
+                {
+                    "const": {
+                        "a": 3,
+                        "b": 4,
+                        "c": 5,
+                        "d": 5
+                    }
+                }
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "const": 5
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 3,
+        "schema1": {
+            "anyOf": [
+                {
+                    "const": [
+                        "foo"
+                    ]
+                },
+                {
+                    "const": {
+                        "a": "foo"
+                    }
+                }
+            ]
+        },
+        "schema2": {
+            "contains": true
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 4,
+        "schema1": {
+            "anyOf": [
+                {
+                    "const": [
+                        6,
+                        12
+                    ]
+                },
+                {
+                    "const": {
+                        "a": 6,
+                        "b": 12
+                    }
+                }
+            ]
+        },
+        "schema2": {
+            "additionalProperties": {
+                "multipleOf": 2
+            },
+            "items": {
+                "multipleOf": 2
+            },
+            "contains": {
+                "multipleOf": 3
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 5,
+        "schema1": {
+            "anyOf": [
+                {
+                    "const": [
+                        "foo"
+                    ]
+                },
+                {
+                    "const": {
+                        "a": "foo"
+                    }
+                }
+            ]
+        },
+        "schema2": {
+            "contains": {
+                "if": false,
+                "else": true
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    }
+]

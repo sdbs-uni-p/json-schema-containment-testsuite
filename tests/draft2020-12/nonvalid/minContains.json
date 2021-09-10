@@ -206,5 +206,43 @@
         "tests": {
             "s1SubsetEqOfs2": false
         }
+    },
+    {
+        "id": 12,
+        "schema1": {
+            "const": []
+        },
+        "schema2": {
+            "not": {
+                "contains": {
+                    "const": 1
+                },
+                "minContains": 0,
+                "maxContains": 1
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 13,
+        "schema1": {
+            "const": [
+                1
+            ]
+        },
+        "schema2": {
+            "not": {
+                "contains": {
+                    "const": 1
+                },
+                "minContains": 0,
+                "maxContains": 1
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
     }
 ]

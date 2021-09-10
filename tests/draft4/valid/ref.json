@@ -508,6 +508,66 @@
     {
         "id": 20,
         "schema1": {
+            "const": 10
+        },
+        "schema2": {
+            "id": "http://localhost:1234/sibling_id/base/",
+            "definitions": {
+                "foo": {
+                    "id": "http://localhost:1234/sibling_id/foo.json",
+                    "minimum": 2
+                },
+                "base_foo": {
+                    "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                    "id": "foo.json",
+                    "minimum": 5
+                }
+            },
+            "allOf": [
+                {
+                    "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                    "id": "http://localhost:1234/sibling_id/",
+                    "$ref": "foo.json"
+                }
+            ]
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 21,
+        "schema1": {
+            "const": 1
+        },
+        "schema2": {
+            "id": "http://localhost:1234/sibling_id/base/",
+            "definitions": {
+                "foo": {
+                    "id": "http://localhost:1234/sibling_id/foo.json",
+                    "minimum": 2
+                },
+                "base_foo": {
+                    "$comment": "this canonical uri is http://localhost:1234/sibling_id/base/foo.json",
+                    "id": "foo.json",
+                    "minimum": 5
+                }
+            },
+            "allOf": [
+                {
+                    "$comment": "$ref resolves to http://localhost:1234/sibling_id/base/foo.json, not ttp://localhost:1234/sibling_id/foo.json",
+                    "id": "http://localhost:1234/sibling_id/",
+                    "$ref": "foo.json"
+                }
+            ]
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 22,
+        "schema1": {
             "const": {
                 "minLength": 1
             }
@@ -520,7 +580,7 @@
         }
     },
     {
-        "id": 21,
+        "id": 23,
         "schema1": {
             "const": {
                 "minLength": -1
@@ -528,42 +588,6 @@
         },
         "schema2": {
             "$ref": "http://json-schema.org/draft-04/schema#"
-        },
-        "tests": {
-            "s1SubsetEqOfs2": false
-        }
-    },
-    {
-        "id": 22,
-        "schema1": {
-            "const": {
-                "$ref": "a"
-            }
-        },
-        "schema2": {
-            "properties": {
-                "$ref": {
-                    "type": "string"
-                }
-            }
-        },
-        "tests": {
-            "s1SubsetEqOfs2": true
-        }
-    },
-    {
-        "id": 23,
-        "schema1": {
-            "const": {
-                "$ref": 2
-            }
-        },
-        "schema2": {
-            "properties": {
-                "$ref": {
-                    "type": "string"
-                }
-            }
         },
         "tests": {
             "s1SubsetEqOfs2": false
@@ -579,11 +603,6 @@
         "schema2": {
             "properties": {
                 "$ref": {
-                    "$ref": "#/definitions/is-string"
-                }
-            },
-            "definitions": {
-                "is-string": {
                     "type": "string"
                 }
             }
@@ -602,6 +621,47 @@
         "schema2": {
             "properties": {
                 "$ref": {
+                    "type": "string"
+                }
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 26,
+        "schema1": {
+            "const": {
+                "$ref": "a"
+            }
+        },
+        "schema2": {
+            "properties": {
+                "$ref": {
+                    "$ref": "#/definitions/is-string"
+                }
+            },
+            "definitions": {
+                "is-string": {
+                    "type": "string"
+                }
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 27,
+        "schema1": {
+            "const": {
+                "$ref": 2
+            }
+        },
+        "schema2": {
+            "properties": {
+                "$ref": {
                     "$ref": "#/definitions/is-string"
                 }
             },
@@ -616,7 +676,7 @@
         }
     },
     {
-        "id": 26,
+        "id": 28,
         "schema1": {
             "const": {
                 "meta": "root",
@@ -695,7 +755,7 @@
         }
     },
     {
-        "id": 27,
+        "id": 29,
         "schema1": {
             "const": {
                 "meta": "root",
@@ -774,7 +834,7 @@
         }
     },
     {
-        "id": 28,
+        "id": 30,
         "schema1": {
             "const": {
                 "foo\"bar": 1
@@ -797,7 +857,7 @@
         }
     },
     {
-        "id": 29,
+        "id": 31,
         "schema1": {
             "const": {
                 "foo\"bar": "1"
@@ -820,70 +880,20 @@
         }
     },
     {
-        "id": 30,
-        "schema1": {
-            "const": 1
-        },
-        "schema2": {
-            "allOf": [
-                {
-                    "$ref": "#foo"
-                }
-            ],
-            "definitions": {
-                "A": {
-                    "id": "#foo",
-                    "type": "integer"
-                }
-            }
-        },
-        "tests": {
-            "s1SubsetEqOfs2": true
-        }
-    },
-    {
-        "id": 31,
-        "schema1": {
-            "const": "a"
-        },
-        "schema2": {
-            "allOf": [
-                {
-                    "$ref": "#foo"
-                }
-            ],
-            "definitions": {
-                "A": {
-                    "id": "#foo",
-                    "type": "integer"
-                }
-            }
-        },
-        "tests": {
-            "s1SubsetEqOfs2": false
-        }
-    },
-    {
         "id": 32,
         "schema1": {
             "const": 1
         },
         "schema2": {
-            "id": "http://localhost:1234/root",
             "allOf": [
                 {
-                    "$ref": "http://localhost:1234/nested.json#foo"
+                    "$ref": "#foo"
                 }
             ],
             "definitions": {
                 "A": {
-                    "id": "nested.json",
-                    "definitions": {
-                        "B": {
-                            "id": "#foo",
-                            "type": "integer"
-                        }
-                    }
+                    "id": "#foo",
+                    "type": "integer"
                 }
             }
         },
@@ -897,6 +907,56 @@
             "const": "a"
         },
         "schema2": {
+            "allOf": [
+                {
+                    "$ref": "#foo"
+                }
+            ],
+            "definitions": {
+                "A": {
+                    "id": "#foo",
+                    "type": "integer"
+                }
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 34,
+        "schema1": {
+            "const": 1
+        },
+        "schema2": {
+            "id": "http://localhost:1234/root",
+            "allOf": [
+                {
+                    "$ref": "http://localhost:1234/nested.json#foo"
+                }
+            ],
+            "definitions": {
+                "A": {
+                    "id": "nested.json",
+                    "definitions": {
+                        "B": {
+                            "id": "#foo",
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": true
+        }
+    },
+    {
+        "id": 35,
+        "schema1": {
+            "const": "a"
+        },
+        "schema2": {
             "id": "http://localhost:1234/root",
             "allOf": [
                 {
@@ -920,7 +980,7 @@
         }
     },
     {
-        "id": 34,
+        "id": 36,
         "schema1": {
             "const": "this is a string"
         },
@@ -941,7 +1001,7 @@
         }
     },
     {
-        "id": 35,
+        "id": 37,
         "schema1": {
             "const": {
                 "$ref": "#/definitions/a_string"

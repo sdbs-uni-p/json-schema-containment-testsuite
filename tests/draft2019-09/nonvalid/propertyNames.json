@@ -91,12 +91,16 @@
         "id": 6,
         "schema1": {
             "const": {
-                "foo": 1
+                "a": {},
+                "aa": {},
+                "aaa": {}
             }
         },
         "schema2": {
             "not": {
-                "propertyNames": true
+                "propertyNames": {
+                    "pattern": "^a+$"
+                }
             }
         },
         "tests": {
@@ -110,7 +114,9 @@
         },
         "schema2": {
             "not": {
-                "propertyNames": true
+                "propertyNames": {
+                    "pattern": "^a+$"
+                }
             }
         },
         "tests": {
@@ -119,6 +125,36 @@
     },
     {
         "id": 8,
+        "schema1": {
+            "const": {
+                "foo": 1
+            }
+        },
+        "schema2": {
+            "not": {
+                "propertyNames": true
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 9,
+        "schema1": {
+            "const": {}
+        },
+        "schema2": {
+            "not": {
+                "propertyNames": true
+            }
+        },
+        "tests": {
+            "s1SubsetEqOfs2": false
+        }
+    },
+    {
+        "id": 10,
         "schema1": {
             "const": {}
         },
