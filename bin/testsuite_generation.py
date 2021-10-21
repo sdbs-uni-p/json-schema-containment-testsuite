@@ -641,6 +641,9 @@ def create_new_folders(path):
         print(draft)
         draft_path = os.path.join(path, draft)
         if os.path.isdir(draft_path) and draft is not None:
+            if os.path.islink(draft_path):
+                print("Skipping '{}' because it is a symlink. Destination of symlink is: '{}'.".format(draft_path, os.readlink(draft_path)))
+                continue
             # Create new draft folder in our own tests
             new_draft_path = os.path.join(TESTS_GENERATION_DIR, draft)
             # All test suites generated from JSON-Schema-Test-Suite are under this folder
